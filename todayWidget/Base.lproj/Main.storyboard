@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--事件添加-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,117 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="标题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiZ-k0-Yee">
+                                <rect key="frame" x="15" y="104" width="345" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Tfj-z1-SpI"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzo-pX-MYS">
+                                <rect key="frame" x="15" y="379" width="345" height="30"/>
+                                <color key="backgroundColor" red="0.38820746135931872" green="0.84976354639334972" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                <state key="normal" title="添加">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fw0-19-FaC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-wb-4bZ">
+                                <rect key="frame" x="15" y="429" width="345" height="30"/>
+                                <color key="backgroundColor" red="0.38820746140000001" green="0.84976354639999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="查看所有">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="qaw-iP-4FX" kind="modal" id="D5A-I4-VpV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cU-b0-xJj">
+                                <rect key="frame" x="15" y="149" width="345" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Fqj-Kc-qXP"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mPy-wb-4bZ" firstAttribute="top" secondItem="gzo-pX-MYS" secondAttribute="bottom" constant="20" id="3Nu-wC-0Oo"/>
+                            <constraint firstItem="BiZ-k0-Yee" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="6Lv-Pc-5Tp"/>
+                            <constraint firstItem="BiZ-k0-Yee" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="FnP-GE-tyc"/>
+                            <constraint firstItem="4cU-b0-xJj" firstAttribute="trailing" secondItem="BiZ-k0-Yee" secondAttribute="trailing" id="Why-an-74s"/>
+                            <constraint firstItem="gzo-pX-MYS" firstAttribute="top" secondItem="4cU-b0-xJj" secondAttribute="bottom" constant="200" id="hPf-ne-RO6"/>
+                            <constraint firstItem="gzo-pX-MYS" firstAttribute="leading" secondItem="4cU-b0-xJj" secondAttribute="leading" id="i5e-oT-fbA"/>
+                            <constraint firstItem="4cU-b0-xJj" firstAttribute="leading" secondItem="BiZ-k0-Yee" secondAttribute="leading" id="ijG-zu-Hek"/>
+                            <constraint firstItem="gzo-pX-MYS" firstAttribute="trailing" secondItem="4cU-b0-xJj" secondAttribute="trailing" id="oJO-i8-Cgs"/>
+                            <constraint firstAttribute="trailing" secondItem="BiZ-k0-Yee" secondAttribute="trailing" constant="15" id="pC3-cl-le6"/>
+                            <constraint firstItem="4cU-b0-xJj" firstAttribute="top" secondItem="BiZ-k0-Yee" secondAttribute="bottom" constant="15" id="vFK-Iw-wf1"/>
+                            <constraint firstItem="mPy-wb-4bZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vaf-9A-d5b"/>
+                            <constraint firstItem="mPy-wb-4bZ" firstAttribute="width" secondItem="gzo-pX-MYS" secondAttribute="width" id="vjd-Fp-17q"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="事件添加" id="ocn-Te-8tj"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="contentTextF" destination="4cU-b0-xJj" id="i1N-Q4-oev"/>
+                        <outlet property="titleTextF" destination="BiZ-k0-Yee" id="8tY-eS-ggB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Lsit View Controller-->
+        <scene sceneID="Li6-J3-tSq">
+            <objects>
+                <viewController storyboardIdentifier="LsitViewController" id="qaw-iP-4FX" customClass="LsitViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6V9-qP-KxK"/>
+                        <viewControllerLayoutGuide type="bottom" id="MGb-fR-04H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DAr-xy-cu5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JzW-ru-21c">
+                                <rect key="frame" x="0.0" y="20" width="375" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52D-zR-9Io">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ml2-9l-GED"/>
+                                </constraints>
+                                <state key="normal" title="返回"/>
+                                <connections>
+                                    <action selector="dismisVCOnClick:" destination="qaw-iP-4FX" eventType="touchUpInside" id="Wr3-kV-Zrd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="52D-zR-9Io" firstAttribute="leading" secondItem="DAr-xy-cu5" secondAttribute="leading" id="9WI-Dn-sG3"/>
+                            <constraint firstItem="MGb-fR-04H" firstAttribute="top" secondItem="52D-zR-9Io" secondAttribute="bottom" id="CFl-fP-Am5"/>
+                            <constraint firstAttribute="trailing" secondItem="52D-zR-9Io" secondAttribute="trailing" id="KRR-fa-NZf"/>
+                            <constraint firstItem="52D-zR-9Io" firstAttribute="top" secondItem="JzW-ru-21c" secondAttribute="bottom" id="R32-hv-ZVh"/>
+                            <constraint firstItem="JzW-ru-21c" firstAttribute="top" secondItem="6V9-qP-KxK" secondAttribute="bottom" id="YCD-x4-9GD"/>
+                            <constraint firstAttribute="trailing" secondItem="JzW-ru-21c" secondAttribute="trailing" id="bu0-65-CGM"/>
+                            <constraint firstItem="JzW-ru-21c" firstAttribute="leading" secondItem="DAr-xy-cu5" secondAttribute="leading" id="fds-wv-98h"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fiw-LG-TpZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="05Y-x7-Ib9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="72"/>
         </scene>
     </scenes>
 </document>

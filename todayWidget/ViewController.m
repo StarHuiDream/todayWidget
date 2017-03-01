@@ -9,6 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+<
+UITextFieldDelegate
+>
+@property (weak, nonatomic) IBOutlet UITextField *titleTextF;
+@property (weak, nonatomic) IBOutlet UITextField *contentTextF;
 
 @end
 
@@ -16,14 +21,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+   
 }
+#pragma -mark UITextFieldDelegate
+-(void)textFieldDidEndEditing:(UITextField *)textField{
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
-
+- (IBAction)addButtonOnClick:(id)sender {
+    [self.view endEditing:YES];
+    
+}
+-(void)setupsubviews{
+    self.titleTextF.delegate = self;
+    self.contentTextF.delegate = self;
+}
 @end
