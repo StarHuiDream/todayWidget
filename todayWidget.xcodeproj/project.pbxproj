@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A2F955251E66F18D008A6E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955241E66F18D008A6E59 /* main.m */; };
 		A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955271E66F18D008A6E59 /* AppDelegate.m */; };
-		A2F9552B1E66F18D008A6E59 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F9552A1E66F18D008A6E59 /* ViewController.m */; };
-		A2F9552E1E66F18D008A6E59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F9552C1E66F18D008A6E59 /* Main.storyboard */; };
 		A2F955301E66F18D008A6E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F9552F1E66F18D008A6E59 /* Assets.xcassets */; };
 		A2F955331E66F18D008A6E59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F955311E66F18D008A6E59 /* LaunchScreen.storyboard */; };
 		A2F9553E1E66F18D008A6E59 /* todayWidgetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F9553D1E66F18D008A6E59 /* todayWidgetTests.m */; };
@@ -19,7 +17,9 @@
 		A2F955611E670C50008A6E59 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955601E670C50008A6E59 /* TodayViewController.m */; };
 		A2F955641E670C50008A6E59 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F955621E670C50008A6E59 /* MainInterface.storyboard */; };
 		A2F955681E670C50008A6E59 /* STWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A2F9555A1E670C50008A6E59 /* STWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A2F955721E6711FA008A6E59 /* LsitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955711E6711FA008A6E59 /* LsitViewController.m */; };
+		A2F9557C1E671840008A6E59 /* LsitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955761E671840008A6E59 /* LsitViewController.m */; };
+		A2F9557D1E671840008A6E59 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955781E671840008A6E59 /* ViewController.m */; };
+		A2F9557E1E671840008A6E59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F955791E671840008A6E59 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,9 +65,6 @@
 		A2F955241E66F18D008A6E59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2F955261E66F18D008A6E59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2F955271E66F18D008A6E59 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A2F955291E66F18D008A6E59 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A2F9552A1E66F18D008A6E59 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A2F9552D1E66F18D008A6E59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A2F9552F1E66F18D008A6E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2F955321E66F18D008A6E59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2F955341E66F18D008A6E59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,8 +80,11 @@
 		A2F955601E670C50008A6E59 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		A2F955631E670C50008A6E59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		A2F955651E670C50008A6E59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2F955701E6711FA008A6E59 /* LsitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LsitViewController.h; sourceTree = "<group>"; };
-		A2F955711E6711FA008A6E59 /* LsitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LsitViewController.m; sourceTree = "<group>"; };
+		A2F955751E671840008A6E59 /* LsitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LsitViewController.h; sourceTree = "<group>"; };
+		A2F955761E671840008A6E59 /* LsitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LsitViewController.m; sourceTree = "<group>"; };
+		A2F955771E671840008A6E59 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A2F955781E671840008A6E59 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A2F955791E671840008A6E59 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,13 +146,9 @@
 		A2F955221E66F18D008A6E59 /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				A2F955731E671840008A6E59 /* Class */,
 				A2F955261E66F18D008A6E59 /* AppDelegate.h */,
 				A2F955271E66F18D008A6E59 /* AppDelegate.m */,
-				A2F955291E66F18D008A6E59 /* ViewController.h */,
-				A2F9552A1E66F18D008A6E59 /* ViewController.m */,
-				A2F955701E6711FA008A6E59 /* LsitViewController.h */,
-				A2F955711E6711FA008A6E59 /* LsitViewController.m */,
-				A2F9552C1E66F18D008A6E59 /* Main.storyboard */,
 				A2F9552F1E66F18D008A6E59 /* Assets.xcassets */,
 				A2F955311E66F18D008A6E59 /* LaunchScreen.storyboard */,
 				A2F955341E66F18D008A6E59 /* Info.plist */,
@@ -204,6 +200,42 @@
 				A2F955651E670C50008A6E59 /* Info.plist */,
 			);
 			path = STWidget;
+			sourceTree = "<group>";
+		};
+		A2F955731E671840008A6E59 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				A2F955741E671840008A6E59 /* Controller */,
+				A2F955791E671840008A6E59 /* Main.storyboard */,
+				A2F9557A1E671840008A6E59 /* Model */,
+				A2F9557B1E671840008A6E59 /* View */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		A2F955741E671840008A6E59 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A2F955751E671840008A6E59 /* LsitViewController.h */,
+				A2F955761E671840008A6E59 /* LsitViewController.m */,
+				A2F955771E671840008A6E59 /* ViewController.h */,
+				A2F955781E671840008A6E59 /* ViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A2F9557A1E671840008A6E59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A2F9557B1E671840008A6E59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,9 +372,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F9557E1E671840008A6E59 /* Main.storyboard in Resources */,
 				A2F955331E66F18D008A6E59 /* LaunchScreen.storyboard in Resources */,
 				A2F955301E66F18D008A6E59 /* Assets.xcassets in Resources */,
-				A2F9552E1E66F18D008A6E59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,9 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2F9552B1E66F18D008A6E59 /* ViewController.m in Sources */,
 				A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */,
-				A2F955721E6711FA008A6E59 /* LsitViewController.m in Sources */,
+				A2F9557C1E671840008A6E59 /* LsitViewController.m in Sources */,
+				A2F9557D1E671840008A6E59 /* ViewController.m in Sources */,
 				A2F955251E66F18D008A6E59 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,14 +459,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A2F9552C1E66F18D008A6E59 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A2F9552D1E66F18D008A6E59 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A2F955311E66F18D008A6E59 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
