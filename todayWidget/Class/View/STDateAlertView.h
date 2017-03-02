@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 
 /** 选择日期之后的回掉 */
-typedef void(^STDateClickBlock) (NSDate *selectDate);
+typedef void(^STDateSureBlock) (NSDate *selectDate);
 /** 消失 */
 typedef void(^STDateDismissBlock)();
 
 @interface STDateAlertView : UIView
-+(instancetype)instance;
-+(void)showDateAlertViewWithSelctBlock:(STDateClickBlock)selectBlock
-                          dismissBlock:(STDateDismissBlock) dismissBlock;
++(instancetype)instanceWithSelectBlock:(STDateSureBlock)sureBlock;
++(void)showDateAlertViewWithSelctBlock:(STDateSureBlock)sureBlock;
 @end

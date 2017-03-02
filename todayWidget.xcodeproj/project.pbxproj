@@ -22,6 +22,7 @@
 		A2F9557E1E671840008A6E59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F955791E671840008A6E59 /* Main.storyboard */; };
 		A2F955811E67194A008A6E59 /* STEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955801E67194A008A6E59 /* STEventModel.m */; };
 		A2F955841E672559008A6E59 /* STDateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955831E672559008A6E59 /* STDateAlertView.m */; };
+		A2F955871E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955861E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		A2F955801E67194A008A6E59 /* STEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEventModel.m; sourceTree = "<group>"; };
 		A2F955821E672559008A6E59 /* STDateAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDateAlertView.h; sourceTree = "<group>"; };
 		A2F955831E672559008A6E59 /* STDateAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDateAlertView.m; sourceTree = "<group>"; };
+		A2F955851E67C3FD008A6E59 /* STEventLevelChangetTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEventLevelChangetTextFiled.h; sourceTree = "<group>"; };
+		A2F955861E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEventLevelChangetTextFiled.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +247,8 @@
 			children = (
 				A2F955821E672559008A6E59 /* STDateAlertView.h */,
 				A2F955831E672559008A6E59 /* STDateAlertView.m */,
+				A2F955851E67C3FD008A6E59 /* STEventLevelChangetTextFiled.h */,
+				A2F955861E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F955871E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m in Sources */,
 				A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */,
 				A2F9557C1E671840008A6E59 /* STLsitViewController.m in Sources */,
 				A2F955841E672559008A6E59 /* STDateAlertView.m in Sources */,
@@ -724,6 +730,7 @@
 				A2F9556A1E670C51008A6E59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
