@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="标题" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BiZ-k0-Yee">
-                                <rect key="frame" x="15" y="104" width="345" height="30"/>
+                                <rect key="frame" x="15" y="60" width="345" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tfj-z1-SpI"/>
                                 </constraints>
@@ -30,29 +30,39 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzo-pX-MYS">
-                                <rect key="frame" x="15" y="379" width="345" height="30"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzo-pX-MYS">
+                                <rect key="frame" x="15" y="323" width="345" height="30"/>
                                 <color key="backgroundColor" red="0.38820746135931872" green="0.84976354639334972" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                 <state key="normal" title="添加">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="addButtonOnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fw0-19-FaC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPy-wb-4bZ">
-                                <rect key="frame" x="15" y="429" width="345" height="30"/>
+                                <rect key="frame" x="15" y="373" width="345" height="30"/>
                                 <color key="backgroundColor" red="0.38820746140000001" green="0.84976354639999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="查看所有">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="qaw-iP-4FX" kind="modal" id="D5A-I4-VpV"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cU-b0-xJj">
-                                <rect key="frame" x="15" y="149" width="345" height="30"/>
+                                <rect key="frame" x="15" y="105" width="345" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fqj-Kc-qXP"/>
                                 </constraints>
@@ -60,15 +70,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ud-2D-Jvj">
+                                <rect key="frame" x="15" y="161.5" width="76.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydX-Gw-Os2">
+                                <rect key="frame" x="93.5" y="155" width="266.5" height="30"/>
+                                <state key="normal" title="请选择开始时间">
+                                    <color key="titleColor" red="0.21724933390000001" green="0.66062515970000002" blue="0.97225719690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4C-fo-eYq">
+                                <rect key="frame" x="93.5" y="193" width="266.5" height="30"/>
+                                <state key="normal" title="请选择结束时间">
+                                    <color key="titleColor" red="0.21724933390000001" green="0.66062515970000002" blue="0.97225719690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e91-Qv-MNO">
+                                <rect key="frame" x="15" y="199.5" width="76.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4Ud-2D-Jvj" firstAttribute="leading" secondItem="4cU-b0-xJj" secondAttribute="leading" id="0Vj-Hu-vmW"/>
                             <constraint firstItem="mPy-wb-4bZ" firstAttribute="top" secondItem="gzo-pX-MYS" secondAttribute="bottom" constant="20" id="3Nu-wC-0Oo"/>
+                            <constraint firstItem="Y4C-fo-eYq" firstAttribute="top" secondItem="ydX-Gw-Os2" secondAttribute="bottom" constant="8" id="5Uf-JN-HQe"/>
                             <constraint firstItem="BiZ-k0-Yee" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="6Lv-Pc-5Tp"/>
+                            <constraint firstItem="Y4C-fo-eYq" firstAttribute="centerY" secondItem="e91-Qv-MNO" secondAttribute="centerY" id="AD1-Sf-5Ud"/>
+                            <constraint firstItem="Y4C-fo-eYq" firstAttribute="trailing" secondItem="ydX-Gw-Os2" secondAttribute="trailing" id="Ax5-pT-byf"/>
+                            <constraint firstItem="ydX-Gw-Os2" firstAttribute="leading" secondItem="4Ud-2D-Jvj" secondAttribute="trailing" constant="2" id="DKr-ks-tUe"/>
                             <constraint firstItem="BiZ-k0-Yee" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="FnP-GE-tyc"/>
+                            <constraint firstItem="e91-Qv-MNO" firstAttribute="leading" secondItem="4Ud-2D-Jvj" secondAttribute="leading" id="QW0-mr-EOX"/>
+                            <constraint firstItem="ydX-Gw-Os2" firstAttribute="centerY" secondItem="4Ud-2D-Jvj" secondAttribute="centerY" id="ViP-Sj-zih"/>
                             <constraint firstItem="4cU-b0-xJj" firstAttribute="trailing" secondItem="BiZ-k0-Yee" secondAttribute="trailing" id="Why-an-74s"/>
-                            <constraint firstItem="gzo-pX-MYS" firstAttribute="top" secondItem="4cU-b0-xJj" secondAttribute="bottom" constant="200" id="hPf-ne-RO6"/>
+                            <constraint firstItem="gzo-pX-MYS" firstAttribute="top" secondItem="Y4C-fo-eYq" secondAttribute="bottom" constant="100" id="aPr-CO-glf"/>
+                            <constraint firstItem="Y4C-fo-eYq" firstAttribute="leading" secondItem="e91-Qv-MNO" secondAttribute="trailing" constant="2" id="bFn-5T-YJ1"/>
+                            <constraint firstItem="ydX-Gw-Os2" firstAttribute="top" secondItem="4cU-b0-xJj" secondAttribute="bottom" constant="20" id="fKg-N5-WDF"/>
                             <constraint firstItem="gzo-pX-MYS" firstAttribute="leading" secondItem="4cU-b0-xJj" secondAttribute="leading" id="i5e-oT-fbA"/>
+                            <constraint firstItem="ydX-Gw-Os2" firstAttribute="trailing" secondItem="4cU-b0-xJj" secondAttribute="trailing" id="iSv-px-ge4"/>
                             <constraint firstItem="4cU-b0-xJj" firstAttribute="leading" secondItem="BiZ-k0-Yee" secondAttribute="leading" id="ijG-zu-Hek"/>
                             <constraint firstItem="gzo-pX-MYS" firstAttribute="trailing" secondItem="4cU-b0-xJj" secondAttribute="trailing" id="oJO-i8-Cgs"/>
                             <constraint firstAttribute="trailing" secondItem="BiZ-k0-Yee" secondAttribute="trailing" constant="15" id="pC3-cl-le6"/>
@@ -87,11 +131,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="93.103448275862078"/>
         </scene>
         <!--Lsit View Controller-->
         <scene sceneID="Li6-J3-tSq">
             <objects>
-                <viewController storyboardIdentifier="LsitViewController" id="qaw-iP-4FX" customClass="LsitViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LsitViewController" id="qaw-iP-4FX" customClass="STLsitViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6V9-qP-KxK"/>
                         <viewControllerLayoutGuide type="bottom" id="MGb-fR-04H"/>
@@ -111,7 +156,7 @@
                                 </constraints>
                                 <state key="normal" title="返回"/>
                                 <connections>
-                                    <action selector="dismisVCOnClick:" destination="qaw-iP-4FX" eventType="touchUpInside" id="Wr3-kV-Zrd"/>
+                                    <action selector="dismisVCOnClick:" destination="qaw-iP-4FX" eventType="touchUpInside" id="6Df-Hi-o8J"/>
                                 </connections>
                             </button>
                         </subviews>

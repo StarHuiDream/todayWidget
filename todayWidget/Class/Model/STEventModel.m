@@ -1,13 +1,17 @@
 //
-//  LsitViewController.h
+//  STEventModel.m
 //  todayWidget
 //
 //  Created by StarHui on 2017/3/1.
 //  Copyright © 2017年 StarHui. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "STEventModel.h"
 
-@interface LsitViewController : UIViewController
+@implementation STEventListModel
+
+@end
+
+@implementation STEventModel
 
 @end

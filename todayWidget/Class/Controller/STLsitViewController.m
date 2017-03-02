@@ -6,13 +6,13 @@
 //  Copyright © 2017年 StarHui. All rights reserved.
 //
 
-#import "LsitViewController.h"
+#import "STLsitViewController.h"
 
-@interface LsitViewController ()
+@interface STLsitViewController ()
 
 @end
 
-@implementation LsitViewController
+@implementation STLsitViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
