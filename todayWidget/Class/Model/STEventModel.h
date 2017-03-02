@@ -7,33 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
+
+
 #define  DataPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"STEventList"];
+
+@interface STBaseMdodel : NSObject
+@end
+
 @class STEventModel;
-@interface STEventListModel : NSObject
+@interface STEventListModel : STBaseMdodel
 @property (copy, nonatomic) NSArray <STEventModel*>*eventList;
-/**
- * 向本地存储数据
- */
--(void)writeDataWith:(STEventModel *)eventModel;
+
 /**
  * 获取本地存储的数据
  */
--(instancetype)fetchData;
++(instancetype)fetchData;
+/**
+ * 删除一个事件
+ */
+-(BOOL)deleteEventWithEventModel:(STEventModel *)eventModel;
 @end
 
 typedef NS_ENUM(NSInteger,eventLevelType) {
-    eventLevelImportType = 0, // 重要
+    eventLevelImportType = 1, // 重要
     eventLevelNormalType,     // 普通
-    eventLevelLittleCaseType,  // 微小
-    eventLevelLittleignoreType
+    eventLevelLittleCaseType  // 微小
 };
-@interface STEventModel : NSObject
+@interface STEventModel : STBaseMdodel
+/** 事件编号 */
+@property (copy, nonatomic) NSString *eventId;
 /** 事件名称 */
-@property (copy, nonatomic)  NSString *enentTile;
+@property (copy, nonatomic)  NSString *eventTitle;
 /** 事件内容 */
-@property (copy, nonatomic)  NSString *enentConent;
+@property (copy, nonatomic)  NSString *eventContent;
 /** 事件添加日期 */
-@property (strong, nonatomic) NSDate *addDate;
+@property (strong, nonatomic) NSDate *createDate;
+@property (copy, nonatomic) NSString *createDateStr;
 /** 事件 开始日期 */
 @property (strong, nonatomic) NSDate *beginDate;
 @property (copy, nonatomic) NSString *beginDatestr;
@@ -41,8 +50,12 @@ typedef NS_ENUM(NSInteger,eventLevelType) {
 @property (strong, nonatomic) NSDate *endDate;
 @property (copy, nonatomic) NSString *endDatestr;
 /** 事件的级别 */
-@property (assign, nonatomic) eventLevelType level;
+@property (assign, nonatomic) eventLevelType eventLevel;
 @property (copy, nonatomic) NSString *levelStr;
 /** 日期格式 */
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
+/*
+ * 将数据存入本地
+ */
+-(BOOL)writeData;
 @end

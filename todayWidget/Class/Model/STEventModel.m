@@ -9,21 +9,10 @@
 #import "STEventModel.h"
  #import <objc/runtime.h>
 
-@interface STEventListModel()<NSCoding>
+@interface STBaseMdodel()<NSCoding>
 @end
 
-@implementation STEventListModel
-
--(void)writeDataWith:(STEventModel *)eventModel{
-    
-    NSString *path = DataPath;
-    [NSKeyedArchiver archiveRootObject:nil toFile:path];
-}
--(instancetype)fetchData{
-
-    return nil;
-}
-
+@implementation STBaseMdodel
 // 有继承关系对象的归档解档
 - (id)initWithCoder:(NSCoder *)aDecoder{
     
@@ -67,20 +56,53 @@
         free(ivars);
     }
 }
-
 @end
 
 
-@interface STEventModel()<NSCoding>
+@implementation STEventListModel
+-(void)writeDataWith:(STEventModel *)eventModel{
+    NSString *path = DataPath;
+    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSMutableArray *tempMutarr = [listModel.eventList copy];
+    if (tempMutarr.count > 0) {
+        tempMutarr = [NSMutableArray array];
+    }
+    [tempMutarr addObject:eventModel];
+    listModel.eventList = [tempMutarr copy];
+    [NSKeyedArchiver archiveRootObject:listModel toFile:path];
+}
++(instancetype)fetchData{
+    NSString *path = DataPath;
+    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    return listModel;
+}
+-(BOOL)deleteEventWithEventModel:(STEventModel *)eventModel{
+    BOOL result = NO;
+    NSString *path = DataPath;
+    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSMutableArray *tempMutarr  = [NSMutableArray arrayWithArray:[listModel.eventList copy]];
+    if (tempMutarr.count > 0) {
+        for (STEventModel *Model in tempMutarr) {
+            if ([Model.eventId isEqualToString:eventModel.eventId]) {
+                [tempMutarr removeObject:Model];
+                result = YES;
+                break;
+            }
+        }
+    }
+    listModel.eventList = [tempMutarr copy];
+    self.eventList      = [listModel.eventList copy];
+    return ([NSKeyedArchiver archiveRootObject:listModel toFile:path]  && result);
+}
 @end
 @implementation STEventModel
 -(instancetype)init{
     self = [super init];
     if (self) {
         NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"yyyy年MM月dd日 HH:mm";
+        dateFormatter.dateFormat = @"yyyy年MM月dd日";
         self.dateFormatter = dateFormatter;
-        self.level         = 0;
+        self.eventLevel         = 1;
     }
     return self;
 }
@@ -96,9 +118,15 @@
         _endDatestr = [_dateFormatter stringFromDate:endDate];
     }
 }
--(void)setLevel:(eventLevelType)level{
-    _level = level;
-    switch (level) {
+-(void)setCreateDate:(NSDate *)createDate{
+    _createDate =createDate;
+    if (createDate) {
+        _createDateStr = [_dateFormatter stringFromDate:createDate];
+    }
+}
+-(void)setEventLevel:(eventLevelType)eventLevel{
+    _eventLevel = eventLevel;
+    switch (eventLevel) {
         case eventLevelImportType:
             _levelStr = @"重要";
             break;
@@ -108,46 +136,35 @@
         case eventLevelLittleCaseType:
             _levelStr = @"微小";
             break;
-        case eventLevelLittleignoreType:
-            _levelStr = @"忽略";
-            break;
-            
         default:
             _levelStr = @"";
             break;
     }
-}
 
-- (void)encodeWithCoder:(NSCoder *)encoder{
-    //归档存储自定义对象
-    unsigned int count = 0;
-    //获得指向该类所有属性的指针
-    objc_property_t *properties =     class_copyPropertyList([self class], &count);
-    for (int i =0; i < count; i ++) {
-        //获得
-        objc_property_t property = properties[i];        //根据objc_property_t获得其属性的名称--->C语言的字符串
-        const char *name = property_getName(property);
-        NSString *key = [NSString   stringWithUTF8String:name];
-        //      编码每个属性,利用kVC取出每个属性对应的数值
-        [encoder encodeObject:[self valueForKeyPath:key] forKey:key];
-    }
-    free(properties);
 }
-- (instancetype)initWithCoder:(NSCoder *)decoder{
-    
-    if (self = [super init]) {
-        //归档存储自定义对象
-        unsigned int count = 0;
-        //获得指向该类所有属性的指针
-        objc_property_t *properties = class_copyPropertyList([self class], &count);
-        for (int i =0; i < count; i ++) {
-            objc_property_t property = properties[i];        //根据objc_property_t获得其属性的名称--->C语言的字符串
-            const char *name = property_getName(property);
-            NSString *key = [NSString stringWithUTF8String:name];        //解码每个属性,利用kVC取出每个属性对应的数值
-            [self setValue:[decoder decodeObjectForKey:key] forKeyPath:key];
-        }
-        free(properties);
+-(BOOL)writeData{
+    NSString *path = DataPath;
+    self.eventId    = [self setupRandomString];
+    self.createDate = [NSDate date];
+    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSMutableArray *tempMutarr = [NSMutableArray arrayWithArray:[listModel.eventList copy]];
+    if (!(tempMutarr.count > 0) ) {
+        listModel = [[STEventListModel alloc] init];
+        tempMutarr = [NSMutableArray array];
     }
-    return self;
+    [tempMutarr addObject:self];
+    listModel.eventList = [tempMutarr copy];
+    return  [NSKeyedArchiver archiveRootObject:listModel toFile:path];
+}
+-(NSString *)setupRandomString{
+    NSMutableString *tempMutStr =[[NSMutableString alloc] init];
+    for(int i = 0; i < 6; i++){
+        NSString *randomnumStr = [NSString stringWithFormat:@"%zd", arc4random() % 10];
+        tempMutStr = (NSMutableString *)[tempMutStr stringByAppendingString:randomnumStr];
+    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmssSSS"];
+    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+    return [NSString stringWithFormat:@"%@%@",currentDateStr,tempMutStr];
 }
 @end

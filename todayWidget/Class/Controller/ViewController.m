@@ -33,14 +33,14 @@ UITextFieldDelegate
 #pragma -mark UITextFieldDelegate
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField == self.titleTextF) {
-        self.eventModel.enentTile = textField.text;
+        self.eventModel.eventTitle = textField.text;
     }else if (textField == self.contentTextF){
-        self.eventModel.enentConent = textField.text;
+        self.eventModel.eventContent = textField.text;
     }
-    
-    else if (textField == self.levelTextFiled){
-    
-    }
+//    
+//    else if (textField == self.levelTextFiled){
+//    
+//    }
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     textField.returnKeyType = UIReturnKeyDone;
@@ -53,14 +53,14 @@ UITextFieldDelegate
 -(void)eventchangeWithClickType:(STEventLevelChangetTextFiledClickType)clickType{
     [self.view endEditing:YES];
     
-    NSInteger level = self.eventModel.level;
+    NSInteger level = self.eventModel.eventLevel;
     if (clickType == STEventLevelChangetTextFiledClicklessenType) {
-        level =  (level <  3 ) ? level+1 : 0;
+        level =  (level <  3 ) ? level+1 : 1;
     }else{
-        level = (level >  0 ) ? level-1 : 3;
+        level = (level >  1 ) ? level-1 : 3;
     }
     
-    self.eventModel.level = level;
+    self.eventModel.eventLevel = level;
     self.levelTextFiled.text = self.eventModel.levelStr;
 }
 - (IBAction)selectBeginDate:(id)sender {
@@ -75,12 +75,15 @@ UITextFieldDelegate
     [self.view endEditing:YES];
     UIButton *button = (UIButton *)sender;
     [STDateAlertView showDateAlertViewWithSelctBlock:^(NSDate *selectDate) {
-        [button setTitle:self.eventModel.endDatestr forState:UIControlStateNormal];
         self.eventModel.endDate = selectDate;
+
+        [button setTitle:self.eventModel.endDatestr forState:UIControlStateNormal];
+
     }];
 }
 - (IBAction)addButtonOnClick:(id)sender {
     [self.view endEditing:YES];
+    [self.eventModel writeData];
 }
 -(void)setupsubviews{
     self.titleTextF.delegate   = self;
