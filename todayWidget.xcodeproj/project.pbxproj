@@ -24,6 +24,7 @@
 		A2F955841E672559008A6E59 /* STDateAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955831E672559008A6E59 /* STDateAlertView.m */; };
 		A2F955871E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955861E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m */; };
 		A2F955961E68622F008A6E59 /* STEventListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955951E68622F008A6E59 /* STEventListCell.m */; };
+		A2F9559B1E693373008A6E59 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F9559A1E693373008A6E59 /* BaseCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		A2F955861E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEventLevelChangetTextFiled.m; sourceTree = "<group>"; };
 		A2F955941E68622F008A6E59 /* STEventListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEventListCell.h; sourceTree = "<group>"; };
 		A2F955951E68622F008A6E59 /* STEventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEventListCell.m; sourceTree = "<group>"; };
+		A2F955991E693373008A6E59 /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		A2F9559A1E693373008A6E59 /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,8 @@
 				A2F955861E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m */,
 				A2F955941E68622F008A6E59 /* STEventListCell.h */,
 				A2F955951E68622F008A6E59 /* STEventListCell.m */,
+				A2F955991E693373008A6E59 /* BaseCell.h */,
+				A2F9559A1E693373008A6E59 /* BaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */,
 				A2F9557C1E671840008A6E59 /* STLsitViewController.m in Sources */,
 				A2F955841E672559008A6E59 /* STDateAlertView.m in Sources */,
+				A2F9559B1E693373008A6E59 /* BaseCell.m in Sources */,
 				A2F955811E67194A008A6E59 /* STEventModel.m in Sources */,
 				A2F9557D1E671840008A6E59 /* ViewController.m in Sources */,
 				A2F955251E66F18D008A6E59 /* main.m in Sources */,

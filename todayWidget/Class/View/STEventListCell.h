@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCell.h"
 @class STEventModel;
-@interface STEventListCell : UITableViewCell
+@interface STEventListCell : BaseCell
 +(instancetype)instanceWithEventModel:(STEventModel *)eventModel tableView:(UITableView *)tableView;
 @end
