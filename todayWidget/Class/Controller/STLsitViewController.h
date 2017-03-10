@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface STLsitViewController : UIViewController
-
++(instancetype)instance;
 @end

@@ -21,12 +21,22 @@ UITableViewDataSource
 
 @implementation STLsitViewController
 
++(instancetype)instance{
+    NSString *mIdentifier = NSStringFromClass(self);
+    UIStoryboard *mStb = [UIStoryboard storyboardWithName:@"Main"bundle:nil];
+    STLsitViewController *vc = [mStb instantiateViewControllerWithIdentifier:mIdentifier];
+    return vc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"待办事件列表";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 #pragma  -mark UITableViewDelegate,UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -55,11 +65,6 @@ UITableViewDataSource
     return UITableViewCellEditingStyleDelete;
 }
 
-- (IBAction)dismisVCOnClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-
-    }];
-}
 -(STEventListModel *)eventListModel{
     if (!_eventListModel) {
         _eventListModel = [STEventListModel fetchData];

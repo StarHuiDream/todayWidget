@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A228E4561E6EB867000DD349 /* STEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955801E67194A008A6E59 /* STEventModel.m */; };
+		A2396B921E7157DB00C22CCB /* STEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2396B911E7157DB00C22CCB /* STEventDetailViewController.m */; };
+		A270E0971E6FFBA60015FF69 /* STTWEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A270E0961E6FFBA60015FF69 /* STTWEventCell.m */; };
+		A270E0981E6FFBB30015FF69 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F9559A1E693373008A6E59 /* BaseCell.m */; };
 		A2F955251E66F18D008A6E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955241E66F18D008A6E59 /* main.m */; };
 		A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955271E66F18D008A6E59 /* AppDelegate.m */; };
 		A2F955301E66F18D008A6E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F9552F1E66F18D008A6E59 /* Assets.xcassets */; };
@@ -66,6 +70,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A228E4571E6EDE5A000DD349 /* STWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = STWidget.entitlements; sourceTree = "<group>"; };
+		A2396B901E7157DB00C22CCB /* STEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STEventDetailViewController.h; sourceTree = "<group>"; };
+		A2396B911E7157DB00C22CCB /* STEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STEventDetailViewController.m; sourceTree = "<group>"; };
+		A26ACE3B1E6D9A5400DAE063 /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todayWidget.entitlements; sourceTree = "<group>"; };
+		A270E0951E6FFBA60015FF69 /* STTWEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTWEventCell.h; sourceTree = "<group>"; };
+		A270E0961E6FFBA60015FF69 /* STTWEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTWEventCell.m; sourceTree = "<group>"; };
 		A2F955201E66F18D008A6E59 /* todayWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todayWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F955241E66F18D008A6E59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2F955261E66F18D008A6E59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,6 +145,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A270E0911E6FFB610015FF69 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				A270E0921E6FFB610015FF69 /* Controller */,
+				A270E0931E6FFB610015FF69 /* Model */,
+				A270E0941E6FFB610015FF69 /* View */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		A270E0921E6FFB610015FF69 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A270E0931E6FFB610015FF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A270E0941E6FFB610015FF69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A270E0951E6FFBA60015FF69 /* STTWEventCell.h */,
+				A270E0961E6FFBA60015FF69 /* STTWEventCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A2F955171E66F18D008A6E59 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +204,7 @@
 		A2F955221E66F18D008A6E59 /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				A26ACE3B1E6D9A5400DAE063 /* todayWidget.entitlements */,
 				A2F955731E671840008A6E59 /* Class */,
 				A2F955261E66F18D008A6E59 /* AppDelegate.h */,
 				A2F955271E66F18D008A6E59 /* AppDelegate.m */,
@@ -209,6 +253,8 @@
 		A2F9555E1E670C50008A6E59 /* STWidget */ = {
 			isa = PBXGroup;
 			children = (
+				A270E0911E6FFB610015FF69 /* Class */,
+				A228E4571E6EDE5A000DD349 /* STWidget.entitlements */,
 				A2F9555F1E670C50008A6E59 /* TodayViewController.h */,
 				A2F955601E670C50008A6E59 /* TodayViewController.m */,
 				A2F955621E670C50008A6E59 /* MainInterface.storyboard */,
@@ -235,6 +281,8 @@
 				A2F955781E671840008A6E59 /* ViewController.m */,
 				A2F955751E671840008A6E59 /* STLsitViewController.h */,
 				A2F955761E671840008A6E59 /* STLsitViewController.m */,
+				A2396B901E7157DB00C22CCB /* STEventDetailViewController.h */,
+				A2396B911E7157DB00C22CCB /* STEventDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -351,6 +399,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3BQKTFNH68;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					A2F955381E66F18D008A6E59 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -368,6 +421,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3BQKTFNH68;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -433,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2F955871E67C3FD008A6E59 /* STEventLevelChangetTextFiled.m in Sources */,
+				A2396B921E7157DB00C22CCB /* STEventDetailViewController.m in Sources */,
 				A2F955961E68622F008A6E59 /* STEventListCell.m in Sources */,
 				A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */,
 				A2F9557C1E671840008A6E59 /* STLsitViewController.m in Sources */,
@@ -464,7 +523,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A270E0981E6FFBB30015FF69 /* BaseCell.m in Sources */,
+				A270E0971E6FFBA60015FF69 /* STTWEventCell.m in Sources */,
 				A2F955611E670C50008A6E59 /* TodayViewController.m in Sources */,
+				A228E4561E6EB867000DD349 /* STEventModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -590,7 +652,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -602,6 +664,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
 				DEVELOPMENT_TEAM = 3BQKTFNH68;
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -614,6 +677,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
 				DEVELOPMENT_TEAM = 3BQKTFNH68;
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -675,8 +739,10 @@
 		A2F955691E670C51008A6E59 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = STWidget/STWidget.entitlements;
 				DEVELOPMENT_TEAM = 3BQKTFNH68;
 				INFOPLIST_FILE = STWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = StarHui.todayWidget.STWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -687,8 +753,10 @@
 		A2F9556A1E670C51008A6E59 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = STWidget/STWidget.entitlements;
 				DEVELOPMENT_TEAM = 3BQKTFNH68;
 				INFOPLIST_FILE = STWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = StarHui.todayWidget.STWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -35,10 +35,11 @@
 -(void)layoutSubviews{
 
     [super layoutSubviews];
-    self.contentView.frame = CGRectMake(8, 5, self.bounds.size.width - 18 , self.bounds.size.height - 12);
-    
     self.contentView.layer.cornerRadius = 5.0f;
     self.contentView.layer.borderWidth  = 1.0f;
+    CGRect contenctFrame = self.contentView.frame;
+    CGFloat margin = 3;
+    self.contentView.layer.frame = CGRectMake(contenctFrame.origin.x + margin, contenctFrame.origin.y + margin, contenctFrame.size.width - 2*margin, contenctFrame.size.height - 2*margin);
     
     switch (self.eventModel.eventLevel) {
         case eventLevelImportType:

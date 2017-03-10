@@ -7,9 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+
+
 
 
 #define  DataPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"STEventList"];
+
+#define stsystemVersion  [[[UIDevice currentDevice] systemVersion] floatValue]
+
+
+static NSString *AppGroupNameStr = @"group.STTodyaWidget.data";
+static NSString *eventLsitData   = @"eventLsitDataKey";
 
 @interface STBaseMdodel : NSObject
 @end
@@ -46,14 +56,19 @@ typedef NS_ENUM(NSInteger,eventLevelType) {
 /** 事件 开始日期 */
 @property (strong, nonatomic) NSDate *beginDate;
 @property (copy, nonatomic) NSString *beginDatestr;
+@property (copy, nonatomic) NSString *beginTimestr;
+
 /** 事件结束日期 */
 @property (strong, nonatomic) NSDate *endDate;
 @property (copy, nonatomic) NSString *endDatestr;
+@property (copy, nonatomic) NSString *endTimestr;
 /** 事件的级别 */
 @property (assign, nonatomic) eventLevelType eventLevel;
 @property (copy, nonatomic) NSString *levelStr;
 /** 日期格式 */
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
+/** 时间格式 */
+@property (strong, nonatomic) NSDateFormatter *timeFormatter;
 /*
  * 将数据存入本地
  */

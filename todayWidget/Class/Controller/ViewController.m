@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "STLsitViewController.h"
 
 #import "STEventModel.h"
 #import "STDateAlertView.h"
@@ -25,6 +26,12 @@ UITextFieldDelegate
 @end
 
 @implementation ViewController
++(instancetype)instance{
+    NSString *mIdentifier = NSStringFromClass(self);
+    UIStoryboard *mStb = [UIStoryboard storyboardWithName:@"Main"bundle:nil];
+    ViewController *vc = [mStb instantiateViewControllerWithIdentifier:mIdentifier];
+    return vc;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

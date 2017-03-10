@@ -12,25 +12,18 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self setsubViews];
 }
 -(instancetype)init{
     self = [super init];
+    [self setsubViews];
     return self;
 }
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     return self;
 }
-//-(void)setFrame:(CGRect)frame{
-//    //修改cell的左右边距为10;
-//    //修改cell的Y值下移10;
-//    //修改cell的高度减少10;
-//    
-//    static CGFloat margin = 10;
-//    frame.origin.x = margin;
-//    frame.size.width -= 2 * frame.origin.x;
-//    frame.origin.y += margin;
-//    frame.size.height -= margin;
-//    [super setFrame:frame];
-//};
+-(void)setsubViews{
+ self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
 @end

@@ -7,33 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "STLsitViewController.h"
 
 @interface AppDelegate ()
-
+@property (strong, nonatomic) UIViewController *rootViewController;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-    // 2.加载storyboard文件，创建控制器
-    // name:就是storyboard文件名
-    // bundle:主bundle,传入nil，表示主bundle
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    // 通过storyboard对象创建控制器
-    // instantiateInitialViewController：加载storyboard箭头指向的控制器
-    UIViewController *rootVc = [storyboard instantiateInitialViewController];
-    
-    // 3.设置窗口的根控制器，并且显示窗口
-    self.window.rootViewController = rootVc;
-    
-    // 4.显示窗口
-    [self.window makeKeyAndVisible];
-    
+    [self setupRootViewController];
     return YES;
 }
 
@@ -64,5 +49,38 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// 9.0 以后
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options {
+    return [self p_parseApplication:app openURL:url sourceApplication:nil annotation:nil];
+}
+
+// 9.0 以前
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [self p_parseApplication:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (BOOL)p_parseApplication:(UIApplication *)application
+                   openURL:(NSURL *)url
+         sourceApplication:(NSString *)sourceApplication
+                annotation:(id)annotation {
+    NSString *urlString = [url absoluteString];
+    if ([urlString isEqualToString:@"STTodayWidget://GOTOEventListVC"]) {
+        STLsitViewController *eventListVC = [STLsitViewController instance];
+        [self.rootViewController.navigationController pushViewController:eventListVC animated:YES];
+    }
+    return YES;
+}
+
+-(void)setupRootViewController{
+
+    self.window                 = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    ViewController *vc          = [ViewController instance];
+    UIViewController *rootVc    = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = rootVc;
+    [self.window makeKeyAndVisible];
+    self.rootViewController = vc;
+
+}
 
 @end

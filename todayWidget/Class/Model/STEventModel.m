@@ -13,6 +13,12 @@
 @end
 
 @implementation STBaseMdodel
+
+-(NSString *)superfetchDataPath{
+    NSURL *mURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupNameStr];
+    mURL = [mURL URLByAppendingPathComponent:eventLsitData];
+    return mURL.path;
+}
 // 有继承关系对象的归档解档
 - (id)initWithCoder:(NSCoder *)aDecoder{
     
@@ -60,26 +66,17 @@
 
 
 @implementation STEventListModel
--(void)writeDataWith:(STEventModel *)eventModel{
-    NSString *path = DataPath;
-    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    NSMutableArray *tempMutarr = [listModel.eventList copy];
-    if (tempMutarr.count > 0) {
-        tempMutarr = [NSMutableArray array];
-    }
-    [tempMutarr addObject:eventModel];
-    listModel.eventList = [tempMutarr copy];
-    [NSKeyedArchiver archiveRootObject:listModel toFile:path];
-}
 +(instancetype)fetchData{
-    NSString *path = DataPath;
-    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSURL *mURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupNameStr];
+    mURL = [mURL URLByAppendingPathComponent:eventLsitData];
+       STEventListModel *listModel =  [NSKeyedUnarchiver unarchiveObjectWithFile:mURL.path];
     return listModel;
 }
 -(BOOL)deleteEventWithEventModel:(STEventModel *)eventModel{
     BOOL result = NO;
-    NSString *path = DataPath;
-    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSURL *mURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupNameStr];
+    mURL = [mURL URLByAppendingPathComponent:eventLsitData];
+    STEventListModel *listModel = [STEventListModel  fetchData];
     NSMutableArray *tempMutarr  = [NSMutableArray arrayWithArray:[listModel.eventList copy]];
     if (tempMutarr.count > 0) {
         for (STEventModel *Model in tempMutarr) {
@@ -92,7 +89,7 @@
     }
     listModel.eventList = [tempMutarr copy];
     self.eventList      = [listModel.eventList copy];
-    return ([NSKeyedArchiver archiveRootObject:listModel toFile:path]  && result);
+    return ([NSKeyedArchiver archiveRootObject:listModel toFile:mURL.path]  && result);
 }
 @end
 @implementation STEventModel
@@ -102,6 +99,11 @@
         NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy年MM月dd日";
         self.dateFormatter = dateFormatter;
+        
+        NSDateFormatter * timeFormatter = [[NSDateFormatter alloc] init];
+        timeFormatter.dateFormat = @"HH:mm";
+        self.timeFormatter = timeFormatter;
+
         self.eventLevel         = 1;
     }
     return self;
@@ -110,12 +112,14 @@
     _beginDate = beginDate;
     if (beginDate) {
         _beginDatestr = [_dateFormatter stringFromDate:beginDate];
+        _beginTimestr = [_timeFormatter stringFromDate:beginDate];
     }
 }
 -(void)setEndDate:(NSDate *)endDate{
     _endDate = endDate;
     if (endDate) {
         _endDatestr = [_dateFormatter stringFromDate:endDate];
+        _endTimestr = [_timeFormatter stringFromDate:endDate];
     }
 }
 -(void)setCreateDate:(NSDate *)createDate{
@@ -143,10 +147,15 @@
 
 }
 -(BOOL)writeData{
-    NSString *path = DataPath;
+    
+    
+
+    
     self.eventId    = [self setupRandomString];
     self.createDate = [NSDate date];
-    STEventListModel *listModel = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    NSURL *mURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupNameStr];
+    mURL = [mURL URLByAppendingPathComponent:eventLsitData];
+     STEventListModel *listModel =  [STEventListModel fetchData];
     NSMutableArray *tempMutarr = [NSMutableArray arrayWithArray:[listModel.eventList copy]];
     if (!(tempMutarr.count > 0) ) {
         listModel = [[STEventListModel alloc] init];
@@ -154,8 +163,13 @@
     }
     [tempMutarr addObject:self];
     listModel.eventList = [tempMutarr copy];
-    return  [NSKeyedArchiver archiveRootObject:listModel toFile:path];
+     return [NSKeyedArchiver archiveRootObject:listModel toFile:mURL.path];
+    
+    
+
+//    [[[UIDevice currentDevice] systemVersion] floatValue]
 }
+/** 获得一个时间戳加6位随机数字的id */
 -(NSString *)setupRandomString{
     NSMutableString *tempMutStr =[[NSMutableString alloc] init];
     for(int i = 0; i < 6; i++){
