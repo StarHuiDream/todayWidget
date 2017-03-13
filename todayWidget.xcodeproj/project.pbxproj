@@ -12,6 +12,7 @@
 		A270E0971E6FFBA60015FF69 /* STTWEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A270E0961E6FFBA60015FF69 /* STTWEventCell.m */; };
 		A270E0981E6FFBB30015FF69 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F9559A1E693373008A6E59 /* BaseCell.m */; };
 		A29271141E754BF900918821 /* STCalendarReminderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A29271131E754BF900918821 /* STCalendarReminderTool.m */; };
+		A2EDE99C1E76C4D0007E0920 /* STWidgetNetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EDE99B1E76C4D0007E0920 /* STWidgetNetWork.m */; };
 		A2F955251E66F18D008A6E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955241E66F18D008A6E59 /* main.m */; };
 		A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955271E66F18D008A6E59 /* AppDelegate.m */; };
 		A2F955301E66F18D008A6E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F9552F1E66F18D008A6E59 /* Assets.xcassets */; };
@@ -79,6 +80,8 @@
 		A270E0961E6FFBA60015FF69 /* STTWEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTWEventCell.m; sourceTree = "<group>"; };
 		A29271121E754BF900918821 /* STCalendarReminderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCalendarReminderTool.h; sourceTree = "<group>"; };
 		A29271131E754BF900918821 /* STCalendarReminderTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCalendarReminderTool.m; sourceTree = "<group>"; };
+		A2EDE99A1E76C4D0007E0920 /* STWidgetNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STWidgetNetWork.h; sourceTree = "<group>"; };
+		A2EDE99B1E76C4D0007E0920 /* STWidgetNetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STWidgetNetWork.m; sourceTree = "<group>"; };
 		A2F955201E66F18D008A6E59 /* todayWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todayWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F955241E66F18D008A6E59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2F955261E66F18D008A6E59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -199,6 +202,23 @@
 			path = STEKEventStoreTool;
 			sourceTree = "<group>";
 		};
+		A2EDE9971E76C491007E0920 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				A2EDE9991E76C4B5007E0920 /* STWidgetNetWork */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		A2EDE9991E76C4B5007E0920 /* STWidgetNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				A2EDE99A1E76C4D0007E0920 /* STWidgetNetWork.h */,
+				A2EDE99B1E76C4D0007E0920 /* STWidgetNetWork.m */,
+			);
+			path = STWidgetNetWork;
+			sourceTree = "<group>";
+		};
 		A2F955171E66F18D008A6E59 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +295,7 @@
 		A2F9555E1E670C50008A6E59 /* STWidget */ = {
 			isa = PBXGroup;
 			children = (
+				A2EDE9971E76C491007E0920 /* Tool */,
 				A270E0911E6FFB610015FF69 /* Class */,
 				A228E4571E6EDE5A000DD349 /* STWidget.entitlements */,
 				A2F9555F1E670C50008A6E59 /* TodayViewController.h */,
@@ -546,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2EDE99C1E76C4D0007E0920 /* STWidgetNetWork.m in Sources */,
 				A270E0981E6FFBB30015FF69 /* BaseCell.m in Sources */,
 				A270E0971E6FFBA60015FF69 /* STTWEventCell.m in Sources */,
 				A2F955611E670C50008A6E59 /* TodayViewController.m in Sources */,
