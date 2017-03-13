@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -293,9 +294,111 @@
                     <view key="view" contentMode="scaleToFill" id="zGw-QO-LVg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaH-v9-CTL">
+                                <rect key="frame" x="15" y="79" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggu-cM-78P">
+                                <rect key="frame" x="15" y="137" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBk-2n-Ap7">
+                                <rect key="frame" x="15" y="166" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofE-jN-MUX">
+                                <rect key="frame" x="15" y="195" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cq-5a-Fet">
+                                <rect key="frame" x="15" y="224" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHG-Qu-i6w">
+                                <rect key="frame" x="0.0" y="637" width="187.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dkx-2Y-JCo"/>
+                                </constraints>
+                                <state key="normal" title="添加到日历"/>
+                                <connections>
+                                    <action selector="addEventToCalendarOnClick:" destination="qN5-Fi-lUe" eventType="touchUpInside" id="QaH-H4-iog"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bH-rT-xCU">
+                                <rect key="frame" x="187.5" y="637" width="187.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="F59-0i-dHb"/>
+                                </constraints>
+                                <state key="normal" title="添加到提醒"/>
+                                <connections>
+                                    <action selector="addEventToReminderOnClick:" destination="qN5-Fi-lUe" eventType="touchUpInside" id="sEt-hb-KgI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0u6-xy-RaX">
+                                <rect key="frame" x="15" y="108" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ofE-jN-MUX" firstAttribute="leading" secondItem="uaH-v9-CTL" secondAttribute="leading" id="3C7-nu-ZbC"/>
+                            <constraint firstItem="hHG-Qu-i6w" firstAttribute="leading" secondItem="zGw-QO-LVg" secondAttribute="leading" id="5at-9v-N3a"/>
+                            <constraint firstItem="ofE-jN-MUX" firstAttribute="top" secondItem="zBk-2n-Ap7" secondAttribute="bottom" constant="8" id="5kZ-tp-TW0"/>
+                            <constraint firstItem="uaH-v9-CTL" firstAttribute="top" secondItem="scd-zJ-OxR" secondAttribute="bottom" constant="15" id="AdB-b5-zIG"/>
+                            <constraint firstAttribute="trailing" secondItem="6bH-rT-xCU" secondAttribute="trailing" id="BWm-Df-7Dd"/>
+                            <constraint firstItem="ggu-cM-78P" firstAttribute="leading" secondItem="uaH-v9-CTL" secondAttribute="leading" id="BkZ-df-C0c"/>
+                            <constraint firstItem="6bH-rT-xCU" firstAttribute="width" secondItem="zGw-QO-LVg" secondAttribute="width" multiplier="0.5" id="Bnw-nQ-LCt"/>
+                            <constraint firstItem="zBk-2n-Ap7" firstAttribute="trailing" secondItem="uaH-v9-CTL" secondAttribute="trailing" id="Dks-h3-fxe"/>
+                            <constraint firstItem="zBk-2n-Ap7" firstAttribute="top" secondItem="ggu-cM-78P" secondAttribute="bottom" constant="8" id="FvD-HG-n20"/>
+                            <constraint firstItem="y0W-Tq-P3v" firstAttribute="top" secondItem="hHG-Qu-i6w" secondAttribute="bottom" id="Jbr-9P-U1B"/>
+                            <constraint firstItem="5Cq-5a-Fet" firstAttribute="leading" secondItem="uaH-v9-CTL" secondAttribute="leading" id="KeP-jt-QXG"/>
+                            <constraint firstItem="ggu-cM-78P" firstAttribute="trailing" secondItem="uaH-v9-CTL" secondAttribute="trailing" id="Lf9-XN-ef6"/>
+                            <constraint firstItem="y0W-Tq-P3v" firstAttribute="top" secondItem="6bH-rT-xCU" secondAttribute="bottom" id="QfP-t5-jAE"/>
+                            <constraint firstItem="5Cq-5a-Fet" firstAttribute="trailing" secondItem="uaH-v9-CTL" secondAttribute="trailing" id="WYY-tC-qiC"/>
+                            <constraint firstItem="ggu-cM-78P" firstAttribute="top" secondItem="0u6-xy-RaX" secondAttribute="bottom" constant="8" id="cRl-qB-SE1"/>
+                            <constraint firstItem="0u6-xy-RaX" firstAttribute="top" secondItem="uaH-v9-CTL" secondAttribute="bottom" constant="8" id="caf-3f-kU0"/>
+                            <constraint firstItem="6bH-rT-xCU" firstAttribute="width" secondItem="hHG-Qu-i6w" secondAttribute="width" id="cvI-GI-Jc1"/>
+                            <constraint firstItem="zBk-2n-Ap7" firstAttribute="leading" secondItem="uaH-v9-CTL" secondAttribute="leading" id="d9a-tU-oLa"/>
+                            <constraint firstAttribute="trailing" secondItem="uaH-v9-CTL" secondAttribute="trailing" constant="15" id="eIg-B5-xOg"/>
+                            <constraint firstItem="0u6-xy-RaX" firstAttribute="trailing" secondItem="uaH-v9-CTL" secondAttribute="trailing" id="kEp-fn-Blb"/>
+                            <constraint firstItem="5Cq-5a-Fet" firstAttribute="top" secondItem="ofE-jN-MUX" secondAttribute="bottom" constant="8" id="oaf-Cj-f3z"/>
+                            <constraint firstItem="0u6-xy-RaX" firstAttribute="leading" secondItem="uaH-v9-CTL" secondAttribute="leading" id="prV-mp-M1q"/>
+                            <constraint firstItem="uaH-v9-CTL" firstAttribute="leading" secondItem="zGw-QO-LVg" secondAttribute="leading" constant="15" id="qfy-UG-H8D"/>
+                            <constraint firstItem="ofE-jN-MUX" firstAttribute="trailing" secondItem="uaH-v9-CTL" secondAttribute="trailing" id="zIB-cO-ega"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="任务详情" id="0nt-d3-swb"/>
+                    <navigationItem key="navigationItem" title="任务详情" id="0nt-d3-swb">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="aEs-ET-yIO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xSA-4f-dKf">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="编辑"/>
+                            </button>
+                            <connections>
+                                <action selector="editEventOnClick:" destination="qN5-Fi-lUe" id="BtK-zc-qNA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="eventBeginDateTimeLabel" destination="ggu-cM-78P" id="wL6-i9-E2A"/>
+                        <outlet property="eventContentLabel" destination="uaH-v9-CTL" id="0lg-3v-yjS"/>
+                        <outlet property="eventCreateDateLabel" destination="0u6-xy-RaX" id="TNE-D8-Tx2"/>
+                        <outlet property="eventEndDateTimeLabel" destination="zBk-2n-Ap7" id="ohL-p6-KAq"/>
+                        <outlet property="eventLevelLable" destination="ofE-jN-MUX" id="Uze-sI-lkU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQ3-3Z-Gaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,31 +7,42 @@
 //
 
 #import "STEventDetailViewController.h"
+#import "STCalendarReminderTool.h"
+#import "STEventModel.h"
 
 @interface STEventDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *eventContentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventCreateDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventBeginDateTimeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *eventEndDateTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventLevelLable;
+
+@property (strong, nonatomic) STEventModel *eventModel;
 @end
 
 @implementation STEventDetailViewController
 
++(instancetype)instanceEventModel:(STEventModel *)eventModel {
+    NSString *mIdentifier = NSStringFromClass(self);
+    UIStoryboard *mStb = [UIStoryboard storyboardWithName:@"Main"bundle:nil];
+    STEventDetailViewController *vc = [mStb instantiateViewControllerWithIdentifier:mIdentifier];
+    vc.eventModel = eventModel;
+    return vc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [STCalendarReminderTool fetchAllEventInUserCalendar];
+    
+}
+- (IBAction)editEventOnClick:(id)sender {
+}
+- (IBAction)addEventToCalendarOnClick:(id)sender {
+}
+- (IBAction)addEventToReminderOnClick:(id)sender {
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

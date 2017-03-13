@@ -11,6 +11,7 @@
 		A2396B921E7157DB00C22CCB /* STEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2396B911E7157DB00C22CCB /* STEventDetailViewController.m */; };
 		A270E0971E6FFBA60015FF69 /* STTWEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A270E0961E6FFBA60015FF69 /* STTWEventCell.m */; };
 		A270E0981E6FFBB30015FF69 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F9559A1E693373008A6E59 /* BaseCell.m */; };
+		A29271141E754BF900918821 /* STCalendarReminderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A29271131E754BF900918821 /* STCalendarReminderTool.m */; };
 		A2F955251E66F18D008A6E59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955241E66F18D008A6E59 /* main.m */; };
 		A2F955281E66F18D008A6E59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F955271E66F18D008A6E59 /* AppDelegate.m */; };
 		A2F955301E66F18D008A6E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F9552F1E66F18D008A6E59 /* Assets.xcassets */; };
@@ -76,6 +77,8 @@
 		A26ACE3B1E6D9A5400DAE063 /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = todayWidget.entitlements; sourceTree = "<group>"; };
 		A270E0951E6FFBA60015FF69 /* STTWEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTWEventCell.h; sourceTree = "<group>"; };
 		A270E0961E6FFBA60015FF69 /* STTWEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTWEventCell.m; sourceTree = "<group>"; };
+		A29271121E754BF900918821 /* STCalendarReminderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCalendarReminderTool.h; sourceTree = "<group>"; };
+		A29271131E754BF900918821 /* STCalendarReminderTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCalendarReminderTool.m; sourceTree = "<group>"; };
 		A2F955201E66F18D008A6E59 /* todayWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todayWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F955241E66F18D008A6E59 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2F955261E66F18D008A6E59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -178,6 +181,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A29271101E754AF500918821 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				A29271111E754AF500918821 /* STCalendarReminderTool */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		A29271111E754AF500918821 /* STCalendarReminderTool */ = {
+			isa = PBXGroup;
+			children = (
+				A29271121E754BF900918821 /* STCalendarReminderTool.h */,
+				A29271131E754BF900918821 /* STCalendarReminderTool.m */,
+			);
+			name = STCalendarReminderTool;
+			path = STEKEventStoreTool;
+			sourceTree = "<group>";
+		};
 		A2F955171E66F18D008A6E59 = {
 			isa = PBXGroup;
 			children = (
@@ -204,10 +225,11 @@
 		A2F955221E66F18D008A6E59 /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
-				A26ACE3B1E6D9A5400DAE063 /* todayWidget.entitlements */,
+				A29271101E754AF500918821 /* Tool */,
 				A2F955731E671840008A6E59 /* Class */,
 				A2F955261E66F18D008A6E59 /* AppDelegate.h */,
 				A2F955271E66F18D008A6E59 /* AppDelegate.m */,
+				A26ACE3B1E6D9A5400DAE063 /* todayWidget.entitlements */,
 				A2F9552F1E66F18D008A6E59 /* Assets.xcassets */,
 				A2F955311E66F18D008A6E59 /* LaunchScreen.storyboard */,
 				A2F955341E66F18D008A6E59 /* Info.plist */,
@@ -498,6 +520,7 @@
 				A2F955841E672559008A6E59 /* STDateAlertView.m in Sources */,
 				A2F9559B1E693373008A6E59 /* BaseCell.m in Sources */,
 				A2F955811E67194A008A6E59 /* STEventModel.m in Sources */,
+				A29271141E754BF900918821 /* STCalendarReminderTool.m in Sources */,
 				A2F9557D1E671840008A6E59 /* ViewController.m in Sources */,
 				A2F955251E66F18D008A6E59 /* main.m in Sources */,
 			);

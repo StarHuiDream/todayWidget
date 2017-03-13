@@ -10,6 +10,8 @@
 #import "STEventModel.h"
 #import "STEventListCell.h"
 
+#import "STEventDetailViewController.h"
+
 @interface STLsitViewController ()
 <
 UITableViewDelegate,
@@ -59,6 +61,12 @@ UITableViewDataSource
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
     return @"删除";
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
+    STEventModel *eventModel = self.eventListModel.eventList[indexPath.row];
+    STEventDetailViewController *eventDetailVC = [STEventDetailViewController instanceEventModel:eventModel];
+    [self.navigationController pushViewController:eventDetailVC animated:YES];
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class STEventModel;
 @interface STEventDetailViewController : UIViewController
-
++(instancetype)instanceEventModel:(STEventModel *)eventModel;
 @end
