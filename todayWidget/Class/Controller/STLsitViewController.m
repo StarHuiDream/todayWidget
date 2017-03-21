@@ -11,6 +11,7 @@
 #import "STEventListCell.h"
 
 #import "STEventDetailViewController.h"
+#import "STCalendarReminderTool.h"
 
 @interface STLsitViewController ()
 <
@@ -56,8 +57,19 @@ UITableViewDataSource
 }
 -(void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath*)indexPath{
     STEventModel *eventModel = self.eventListModel.eventList[indexPath.row];
-    [self.eventListModel deleteEventWithEventModel:eventModel];
+    BOOL localResult = [self.eventListModel deleteEventWithEventModel:eventModel];
+    // 删除日历中的事件
+    BOOL calendarResult =  [STCalendarReminderTool deleteEventWithEventIdentifier:eventModel.eventIdentifier];
     [self.tableView reloadData];
+    
+    if(calendarResult && localResult ){
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"删除成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
     return @"删除";

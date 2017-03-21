@@ -144,9 +144,7 @@
     }
 
 }
--(BOOL)writeData{
-    
-    
+-(BOOL)saveEvent{
     self.eventId    = [self setupRandomString];
     self.createDate = [NSDate date];
     NSURL *mURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupNameStr];
@@ -160,6 +158,26 @@
     [tempMutarr addObject:self];
     listModel.eventList = [tempMutarr copy];
      return [NSKeyedArchiver archiveRootObject:listModel toFile:mURL.path];
+}
+-(BOOL )updatEventIdentifier{
+    BOOL result = NO;
+    NSURL *mURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:AppGroupNameStr];
+    mURL = [mURL URLByAppendingPathComponent:eventLsitData];
+    STEventListModel *listModel = [STEventListModel  fetchData];
+//    NSMutableArray *tempMutarr  = [NSMutableArray arrayWithArray:[listModel.eventList copy]];
+    if (listModel.eventList.count > 0) {
+        for (STEventModel *Model in listModel.eventList) {
+            if ([Model.eventId isEqualToString:self.eventId]) {
+//                [tempMutarr removeObject:Model];
+                Model.eventIdentifier = self.eventIdentifier;
+                result = YES;
+                break;
+            }
+        }
+    }
+//    [tempMutarr addObject:self];
+//    listModel.eventList = [tempMutarr copy];
+    return ([NSKeyedArchiver archiveRootObject:listModel toFile:mURL.path]  && result);
 }
 /** 获得一个时间戳加6位随机数字的id */
 -(NSString *)setupRandomString{

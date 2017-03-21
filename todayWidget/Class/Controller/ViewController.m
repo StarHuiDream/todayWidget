@@ -90,7 +90,16 @@ UITextFieldDelegate
 }
 - (IBAction)addButtonOnClick:(id)sender {
     [self.view endEditing:YES];
-    [self.eventModel writeData];
+    BOOL result =  [self.eventModel saveEvent];
+    if (result) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
 }
 -(void)setupsubviews{
     self.titleTextF.delegate   = self;

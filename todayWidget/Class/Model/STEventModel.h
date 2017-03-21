@@ -69,8 +69,15 @@ typedef NS_ENUM(NSInteger,eventLevelType) {
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 /** 时间格式 */
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
+/** 保存在日历中的唯一标示 */
+@property (copy, nonatomic) NSString *eventIdentifier;
 /*
  * 将数据存入本地
  */
--(BOOL)writeData;
+-(BOOL)saveEvent;
+/*
+ * 保存到日历之后刷新 eventIdentifier
+ *
+ */
+-(BOOL )updatEventIdentifier;
 @end
