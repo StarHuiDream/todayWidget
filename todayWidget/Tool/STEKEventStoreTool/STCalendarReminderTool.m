@@ -12,13 +12,15 @@
 @interface STCalendarReminderTool()
 @end
 @implementation STCalendarReminderTool
+
 +(EKEventStore *)shareinstance{
     static dispatch_once_t once = 0;
     static EKEventStore *store;
     dispatch_once(&once, ^{ store = [[EKEventStore alloc] init]; });
     return store;
 }
-+(NSArray *)fetchEventWithStartDate:(NSDate *)startDate
+
++(NSArray *)fetchEventsWithStartDate:(NSDate *)startDate
                             endDate:(NSDate *)enDate{
     
     EKEventStore *store = [STCalendarReminderTool shareinstance];
@@ -26,41 +28,11 @@
                                                             endDate:enDate
                                                           calendars:nil];
     NSArray *events = [store eventsMatchingPredicate:predicate];
-    [store enumerateEventsMatchingPredicate:predicate usingBlock:^(EKEvent * _Nonnull event, BOOL * _Nonnull stop) {
-        
-        NSLog(@"%@",event);
-    }];
-    return events;
-}
-
-+(NSArray *)fetchAllEventInUserCalendar{
-    
-
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
-    // Get the appropriate calendar
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    // Create the start date components
-    NSDateComponents *oneDayAgoComponents = [[NSDateComponents alloc] init];
-    oneDayAgoComponents.day = -1;
-    NSDate *oneDayAgo = [calendar dateByAddingComponents:oneDayAgoComponents
-                                                  toDate:[NSDate date]
-                                                 options:0];
-    // Create the end date components
-    NSDateComponents *oneYearFromNowComponents = [[NSDateComponents alloc] init];
-    oneYearFromNowComponents.year = 1;
-    NSDate *oneYearFromNow = [calendar dateByAddingComponents:oneYearFromNowComponents
-                                                       toDate:[NSDate date]
-                                                      options:0];
-    
-    // Create the predicate from the event store's instance method
-    NSPredicate *predicate = [store predicateForEventsWithStartDate:oneDayAgo
-                                                            endDate:oneYearFromNow
-                                                          calendars:nil];
-    
-    // Fetch all events that match the predicate
-    NSArray *events = [store eventsMatchingPredicate:predicate];
-    NSLog(@"eventsevents %@",events);
+    NSInteger i = 1;
+    for (EKEvent *event in events) {
+         NSLog(@"第 %zd 个提醒 %@",i,event);
+        i++;
+    }
     return events;
 }
 
@@ -116,6 +88,7 @@
              [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
              if (!err) {
                  if (successBlock) {
+                     NSLog(@"calendarItemIdentifier  %@ \n\n\n eventIdentifier %@",event.calendarItemIdentifier,event.eventIdentifier) ;
                      successBlock(event.eventIdentifier);
                  }
              }else{
@@ -124,75 +97,55 @@
                      failBlock(err);
                  }
              }
-             NSLog(@"eventIdentifier %@",event.eventIdentifier);
          });
      }];
 }
 
 +(BOOL)deleteEventWithEventIdentifier:(NSString *)eventIdentifier{
+    
     EKEventStore *store = [STCalendarReminderTool shareinstance];
     EKEvent *event = [store eventWithIdentifier:eventIdentifier];
-    // YES立即删除事件;否则，更改将批处理，直到调用commit：方法。
     return  [store removeEvent:event span:EKSpanThisEvent commit:YES error:nil];
 }
 
-+(NSArray *)fetchAllReminder{
-
++(void)fetchRemindersWithStartDate:(NSDate *)starDate
+                          endDate:(NSDate *)endDate
+                          success:(STCalendarReminderToolFetchSuccessBlock)success{
+    
     EKEventStore *store = [STCalendarReminderTool shareinstance];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *oneDayAgoComponents = [[NSDateComponents alloc] init];
-    oneDayAgoComponents.day = -1;
-    NSDate *oneDayAgo = [calendar dateByAddingComponents:oneDayAgoComponents
-                                                  toDate:[NSDate date]
-                                                 options:0];
-
-    NSDateComponents *oneYearFromNowComponents = [[NSDateComponents alloc] init];
-    oneYearFromNowComponents.year = 1;
-    NSDate *oneYearFromNow = [calendar dateByAddingComponents:oneYearFromNowComponents
-                                                       toDate:[NSDate date]
-                                                      options:0];
-    
- 
-    NSPredicate *predicate = [store predicateForIncompleteRemindersWithDueDateStarting:oneDayAgo ending:oneYearFromNow calendars:[store calendarsForEntityType:EKEntityTypeReminder]];
-    
-    NSPredicate *predicateAll = [store predicateForRemindersInCalendars:nil];
-    
-
-    
+    NSPredicate *predicate = [store predicateForIncompleteRemindersWithDueDateStarting:starDate
+                                                                                ending:endDate
+                                                                             calendars:[store calendarsForEntityType:EKEntityTypeReminder]];
     [store fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders) {
-        for (EKReminder *reminder in reminders) {
-            // do something for each reminder
+        if (success) {
+            success(reminders);
         }
     }];
-    [store calendarItemWithIdentifier:@""];
+}
++(void)fetchAllRemindersWithsuccess:(STCalendarReminderToolFetchSuccessBlock)success{
     
-    
-    [store fetchRemindersMatchingPredicate:predicateAll completion:^(NSArray *reminders) {
-       
-        for (EKReminder *reminder in reminders) {
-            // do something for each reminder
-        }
-    }];
-    
-    
+    EKEventStore *store      = [STCalendarReminderTool shareinstance];
+    NSPredicate  *predicate  = [store predicateForRemindersInCalendars:nil];
     [store fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders) {
         
+        NSInteger i = 1;
         for (EKReminder *reminder in reminders) {
-            // do something for each reminder
+            NSLog(@"第 %zd 个提醒 %@",i,reminder);
+            i++;
+        }
+        if (success) {
+            success(reminders);
         }
     }];
-    
-//    [store predicateForIncompleteRemindersWithDueDateStarting:oneDayAgo
-//                                                                                ending:oneYearFromNow
-//                                                                             calendars:nil];
-    
-
-//    NSArray *events = [store eventsMatchingPredicate:predicate];
-//    NSLog(@"eventsevents %@",events);
-    return nil;
-
 }
++(EKCalendarItem *)fetchReminderWithIdentier:(NSString *)identifer{
+
+    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKCalendarItem *item = [store calendarItemWithIdentifier:identifer];
+    NSLog(@"item  item %@",item);
+    return item;
+}
+
 +(void)saveEventIntoReminderWithTitle:(NSString *)title
                                 notes:(NSString *)notes
                             startDate:(NSDate *)startDate
@@ -254,5 +207,13 @@
              }
          });
      }];
+}
++(BOOL)deleteReminderWithIdentifer:(NSString *)identifier{
+    
+    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKCalendarItem *item = [store calendarItemWithIdentifier:identifier];
+
+
+    return YES;
 }
 @end

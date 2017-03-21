@@ -22,9 +22,19 @@ typedef void (^STCalendarReminderToolSaveFailBlock)(NSError *err);
 typedef void (^STCalendarReminderToolFetchSuccessBlock)(NSArray *eventArr);
 
 @interface STCalendarReminderTool : NSObject
-+(NSArray *)fetchAllEventInUserCalendar;
+
+/** 查询一个时间范围内的事件
+ * startDate enDate 查询的日期范围
+ */
++(NSArray *)fetchEventsWithStartDate:(NSDate *)startDate
+                             endDate:(NSDate *)enDate;
+
+/** 用唯一标示查询一个事件(只能查询日历里面的事件)
+ * eventidentifer 唯一标示
+ */
 +(EKEvent *)fetchEventWithIdentifer:(NSString *)eventidentifer;
-/*
+
+/** 向日历添加一个事件
  * title  事件标题
  * notes  事件备注
  * location 事件地址
@@ -43,10 +53,28 @@ typedef void (^STCalendarReminderToolFetchSuccessBlock)(NSArray *eventArr);
              availability:(EKEventAvailability)availability
              successBlock:(STCalendarReminderToolSaveSuccessBlock)successBlock
                 failBlock:(STCalendarReminderToolSaveFailBlock)failBlock;
-//+(void)modifyEventWith:(NSString *)eventIdentifier;
+/** 
+ * 删除一个事件
+ * eventIdentifier 事件唯一标示
+ */
 +(BOOL)deleteEventWithEventIdentifier:(NSString *)eventIdentifier;
 
-+(NSArray *)fetchAllReminder;
+/**
+ * 查询所有的提醒
+ */
++(void)fetchAllRemindersWithsuccess:(STCalendarReminderToolFetchSuccessBlock)success;
+
+/** 
+ * 查询一个时间范围里面的提醒
+ * starDate endDate
+ */
++(void)fetchRemindersWithStartDate:(NSDate *)starDate
+                           endDate:(NSDate *)endDate
+                           success:(STCalendarReminderToolFetchSuccessBlock)success;
+/**
+ * 用唯一标示查询提醒（⚠️这个方法也可以查询日历里面的事件）
+ */
++(EKCalendarItem *)fetchReminderWithIdentier:(NSString *)identifier;
 /*
  * title  事件标题
  * notes  事件备注
@@ -65,4 +93,8 @@ typedef void (^STCalendarReminderToolFetchSuccessBlock)(NSArray *eventArr);
                             completed:(BOOL)completed
                          successBlock:(STCalendarReminderToolSaveSuccessBlock)successBlock
                             failBlock:(STCalendarReminderToolSaveFailBlock)failBlock;
+/**
+ * 删除一个提醒
+ */
++(BOOL)deleteReminderWithIdentifer:(NSString *)identifier;
 @end

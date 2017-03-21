@@ -34,8 +34,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [STCalendarReminderTool fetchAllEventInUserCalendar];
-    [STCalendarReminderTool fetchAllReminder];
+    NSDate *startDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-60*60*24];
+//    [STCalendarReminderTool fetchEventsWithStartDate:startDate endDate:[[NSDate alloc] initWithTimeIntervalSinceNow:60*60*24]];
+//    [STCalendarReminderTool fetchAllRemindersWithsuccess:^(NSArray *eventArr) {
+//        
+//    }];
+    [STCalendarReminderTool fetchReminderWithIdentier:@"98A5EF88-3FDC-4B93-9EB1-FB11CD3CDFB0"];
     self.title                      = self.eventModel.eventTitle;
     self.eventContentLabel.text     = self.eventModel.eventContent;
     self.eventCreateDateLabel.text  = self.eventModel.beginDatestr;
