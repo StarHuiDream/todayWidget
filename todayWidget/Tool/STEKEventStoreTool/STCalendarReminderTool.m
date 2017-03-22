@@ -13,7 +13,7 @@
 @end
 @implementation STCalendarReminderTool
 
-+(EKEventStore *)shareinstance{
++(EKEventStore *)shareStoreinstance{
     static dispatch_once_t once = 0;
     static EKEventStore *store;
     dispatch_once(&once, ^{ store = [[EKEventStore alloc] init]; });
@@ -23,7 +23,7 @@
 +(NSArray *)fetchEventsWithStartDate:(NSDate *)startDate
                             endDate:(NSDate *)enDate{
     
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     NSPredicate *predicate = [store predicateForEventsWithStartDate:startDate
                                                             endDate:enDate
                                                           calendars:nil];
@@ -38,7 +38,7 @@
 
 +(EKEvent *)fetchEventWithIdentifer:(NSString *)eventidentifer{
     
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     EKEvent *event = [store eventWithIdentifier:eventidentifer];
     return event;
 }
@@ -54,7 +54,7 @@
              successBlock:(STCalendarReminderToolSaveSuccessBlock)successBlock
                 failBlock:(STCalendarReminderToolSaveFailBlock)failBlock{
     
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     [store requestAccessToEntityType:EKEntityTypeEvent
                                 completion:
      ^(BOOL granted, NSError *error) {
@@ -103,16 +103,17 @@
 
 +(BOOL)deleteEventWithEventIdentifier:(NSString *)eventIdentifier{
     
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
+    NSError *err = nil;
     EKEvent *event = [store eventWithIdentifier:eventIdentifier];
-    return  [store removeEvent:event span:EKSpanThisEvent commit:YES error:nil];
+    return  [store removeEvent:event span:EKSpanThisEvent commit:YES error:&err];
 }
 
 +(void)fetchRemindersWithStartDate:(NSDate *)starDate
                           endDate:(NSDate *)endDate
                           success:(STCalendarReminderToolFetchSuccessBlock)success{
     
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     NSPredicate *predicate = [store predicateForIncompleteRemindersWithDueDateStarting:starDate
                                                                                 ending:endDate
                                                                              calendars:[store calendarsForEntityType:EKEntityTypeReminder]];
@@ -124,7 +125,7 @@
 }
 +(void)fetchAllRemindersWithsuccess:(STCalendarReminderToolFetchSuccessBlock)success{
     
-    EKEventStore *store      = [STCalendarReminderTool shareinstance];
+    EKEventStore *store      = [STCalendarReminderTool shareStoreinstance];
     NSPredicate  *predicate  = [store predicateForRemindersInCalendars:nil];
     [store fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders) {
         
@@ -140,7 +141,7 @@
 }
 +(EKCalendarItem *)fetchReminderWithIdentier:(NSString *)identifer{
 
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     EKCalendarItem *item = [store calendarItemWithIdentifier:identifer];
     NSLog(@"item  item %@",item);
     return item;
@@ -156,7 +157,7 @@
                          successBlock:(STCalendarReminderToolSaveSuccessBlock)successBlock
                             failBlock:(STCalendarReminderToolSaveFailBlock)failBlock{
     
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     [store requestAccessToEntityType:EKEntityTypeReminder
                           completion:
      ^(BOOL granted, NSError *error) {
@@ -171,7 +172,6 @@
                  //被用户拒绝，不允许访问提醒
                  return;
              }
-
              EKReminder *reminder = [EKReminder reminderWithEventStore:store];
              [reminder setCalendar:[store defaultCalendarForNewReminders]];
              reminder.title       = title;
@@ -209,11 +209,10 @@
      }];
 }
 +(BOOL)deleteReminderWithIdentifer:(NSString *)identifier{
-    
-    EKEventStore *store = [STCalendarReminderTool shareinstance];
+    EKEventStore *store = [STCalendarReminderTool shareStoreinstance];
     EKCalendarItem *item = [store calendarItemWithIdentifier:identifier];
-
-
-    return YES;
+    EKReminder *reminder =(EKReminder *)item;
+    NSError *err = nil;
+    return  [store removeReminder:reminder commit:YES error:&err];
 }
 @end

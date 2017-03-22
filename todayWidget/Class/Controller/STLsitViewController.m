@@ -60,6 +60,8 @@ UITableViewDataSource
     BOOL localResult = [self.eventListModel deleteEventWithEventModel:eventModel];
     // 删除日历中的事件
     BOOL calendarResult =  [STCalendarReminderTool deleteEventWithEventIdentifier:eventModel.eventIdentifier];
+    BOOL reminder =  [STCalendarReminderTool deleteReminderWithIdentifer:eventModel.eventIdentifier];
+    NSLog(@"reminder %zd",reminder);
     [self.tableView reloadData];
     
     if(calendarResult && localResult ){

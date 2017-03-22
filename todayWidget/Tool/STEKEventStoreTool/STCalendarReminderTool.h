@@ -23,6 +23,8 @@ typedef void (^STCalendarReminderToolFetchSuccessBlock)(NSArray *eventArr);
 
 @interface STCalendarReminderTool : NSObject
 
++(EKEventStore *)shareStoreinstance;
+
 /** 查询一个时间范围内的事件
  * startDate enDate 查询的日期范围
  */

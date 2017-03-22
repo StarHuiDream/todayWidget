@@ -385,11 +385,11 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xSA-4f-dKf">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="编辑"/>
+                                <state key="normal" title="编辑事件"/>
+                                <connections>
+                                    <action selector="editEventOnClick:" destination="qN5-Fi-lUe" eventType="touchUpInside" id="Yr1-QY-EQc"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="editEventOnClick:" destination="qN5-Fi-lUe" id="BtK-zc-qNA"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

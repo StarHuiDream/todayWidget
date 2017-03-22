@@ -10,8 +10,13 @@
 #import "STCalendarReminderTool.h"
 #import "STEventModel.h"
 
+#import <EventKitUI/EventKitUI.h>
 
 @interface STEventDetailViewController ()
+<
+EKEventViewDelegate
+,EKEventEditViewDelegate
+>
 @property (weak, nonatomic) IBOutlet UILabel *eventContentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventCreateDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventBeginDateTimeLabel;
@@ -35,10 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSDate *startDate = [[NSDate alloc] initWithTimeIntervalSinceNow:-60*60*24];
-//    [STCalendarReminderTool fetchEventsWithStartDate:startDate endDate:[[NSDate alloc] initWithTimeIntervalSinceNow:60*60*24]];
-//    [STCalendarReminderTool fetchAllRemindersWithsuccess:^(NSArray *eventArr) {
-//        
-//    }];
+    [STCalendarReminderTool fetchEventsWithStartDate:startDate endDate:[[NSDate alloc] initWithTimeIntervalSinceNow:60*60*24]];
+    [STCalendarReminderTool fetchAllRemindersWithsuccess:^(NSArray *eventArr) {
+        
+    }];
     [STCalendarReminderTool fetchReminderWithIdentier:@"98A5EF88-3FDC-4B93-9EB1-FB11CD3CDFB0"];
     self.title                      = self.eventModel.eventTitle;
     self.eventContentLabel.text     = self.eventModel.eventContent;
@@ -46,16 +51,39 @@
     self.eventEndDateTimeLabel.text = self.eventModel.endDatestr;
     self.eventLevelLable.text       = self.eventModel.levelStr;
 }
+#pragma -mark EKEventViewDelegate
+-(void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action{
+
+    
+}
+#pragma -mark EKEventEditViewDelegate
+-(void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action{
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
 - (IBAction)editEventOnClick:(id)sender {
-//    EKEventEditController
+    
+    EKEvent *event = [STCalendarReminderTool fetchEventWithIdentifer:_eventModel.eventIdentifier];
+    if (!event) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"这个事件还没有保存到日历中" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    EKEventEditViewController *editVC = [[EKEventEditViewController alloc] init];
+    editVC.event      = [STCalendarReminderTool fetchEventWithIdentifer:_eventModel.eventIdentifier];
+    editVC.eventStore = [STCalendarReminderTool shareStoreinstance];
+    editVC.editViewDelegate = self;
+    [self presentViewController:editVC animated:YES completion:nil];
 }
 - (IBAction)addEventToCalendarOnClick:(id)sender {
     
-    
+
     EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:1.0f * 1.0f * 1];
-    
-    
-    
+
     [STCalendarReminderTool saveEventWithTitle:_eventModel.eventTitle
                                          notes:_eventModel.eventContent
                                       location:@"帝都"
@@ -79,8 +107,7 @@
 }
 - (IBAction)addEventToReminderOnClick:(id)sender {
     
-      EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:1.0f * 1.0f * 1];
-    
+    EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:1.0f * 1.0f * 1];
     [STCalendarReminderTool saveEventIntoReminderWithTitle:_eventModel.eventTitle
                                                      notes:_eventModel.eventContent
                                                  startDate:_eventModel.beginDate
